@@ -37,6 +37,7 @@ static class ExceptionHelpers
             ThrowGreaterThanOrEqual(value, other, paramName);
         }
     }
+
     internal static void ThrowIfLessThan<T>(T value, T other,
 #if NET8_0_OR_GREATER
         [CallerArgumentExpression(nameof(value))] 
@@ -144,6 +145,7 @@ static class ExceptionHelpers
     {
         throw new ArgumentOutOfRangeException(paramName, value, $"{paramName} ('{value}') must be less than '{other}'. (Parameter '{paramName}')");
     }
+
     [DoesNotReturn]
     static void ThrowLessThan<T>(T value, T other, string? paramName)
     {
