@@ -148,6 +148,31 @@ namespace SpanExtensions.Tests.UnitTests
             {
                 Assert.Throws<ArgumentException>(() => ReadOnlySpanExtensions.SplitAny("aabb".AsSpan(), ['b', 'c'], 1, InvalidCountExceedingBehaviour));
             }
+
+            [Fact]
+            public void EmptyDelimitersUsesWhiteSpaceCharacters()
+            {
+                ReadOnlySpan<char> source = "Hello World!\nThis is a test.\rLet's see how it works.";
+                ReadOnlySpan<char> delimiters = "";
+                var expected = new[]
+                {
+                    "Hello".ToCharArray(),
+                    "World!".ToCharArray(),
+                    "This".ToCharArray(),
+                    "is".ToCharArray(),
+                    "a".ToCharArray(),
+                    "test.".ToCharArray(),
+                    "Let's".ToCharArray(),
+                    "see".ToCharArray(),
+                    "how".ToCharArray(),
+                    "it".ToCharArray(),
+                    "works.".ToCharArray()
+                };
+
+                var actual = source.SplitAny(delimiters).ToSystemEnumerable(source);
+
+                Assert.Equal(expected, actual);
+            }
         }
     }
 }

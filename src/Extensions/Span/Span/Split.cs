@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Buffers;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 #if !NET9_0_OR_GREATER
 
@@ -21,7 +19,7 @@ namespace SpanExtensions
         /// <returns>Returns a <see cref="SpanSplitEnumerator{T}"/>.</returns>
         public static SpanSplitEnumerator<T> Split<T>(this Span<T> source, T separator) where T : IEquatable<T>
         {
-            return new SpanSplitEnumerator<T>(source, separator);
+            return Split((ReadOnlySpan<T>)source, separator);
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace SpanExtensions
         /// <returns>Returns a <see cref="SpanSplitEnumerator{T}"/>.</returns>
         public static SpanSplitEnumerator<T> Split<T>(this Span<T> source, ReadOnlySpan<T> separator) where T : IEquatable<T>
         {
-            return new SpanSplitEnumerator<T>(source, separator, SpanSplitEnumeratorMode.Sequence);
+            return Split((ReadOnlySpan<T>)source, separator);
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace SpanExtensions
         /// <returns>Returns a <see cref="SpanSplitEnumerator{T}"/>.</returns>
         public static SpanSplitEnumerator<T> SplitAny<T>(this Span<T> source, ReadOnlySpan<T> separators) where T : IEquatable<T>
         {
-            return new SpanSplitEnumerator<T>(source, separators, SpanSplitEnumeratorMode.Any);
+            return SplitAny((ReadOnlySpan<T>)source, separators);
         }
 
 #if NET8_0
@@ -65,7 +63,7 @@ namespace SpanExtensions
         /// </remarks>
         public static SpanSplitEnumerator<T> SplitAny<T>(this Span<T> source, SearchValues<T> separators) where T : IEquatable<T>
         {
-            return new SpanSplitEnumerator<T>(source, separators);
+            return SplitAny((ReadOnlySpan<T>)source, separators);
         }
 #endif
 
