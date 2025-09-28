@@ -11,8 +11,8 @@
         <Company>draconware</Company>
         <Description>
             Never again switch back to using string instead of ReadonlySpan&lt;T&gt;, just because the method you seek is not supported.
-
-			SpanExtensions.Net aims to help developers use ReadonlySpan&lt;T&gt; and Span&lt;T&gt; more productively, efficiently and safely and write overall more performant Programs.
+ 
+			      SpanExtensions.Net aims to help developers use ReadonlySpan&lt;T&gt; and Span&lt;T&gt; more productively, efficiently and safely and write overall more performant Programs.
 		</Description>
         <RepositoryUrl>https://github.com/draconware-dev/SpanExtensions.Net</RepositoryUrl>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

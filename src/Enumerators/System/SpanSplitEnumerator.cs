@@ -116,19 +116,17 @@ namespace SpanExtensions
                 }
 
                 currentStartIndex = nextStartIndex;
-
+              
                 if(index < 0)
                 {
                     currentEndIndex = Span.Length;
                     nextStartIndex = Span.Length;
-
                     mode = (SpanSplitEnumeratorMode)(-1);
                     return true;
                 }
 
                 currentEndIndex = currentStartIndex + index;
                 nextStartIndex = currentEndIndex + length;
-
                 return true;
             }
         }
