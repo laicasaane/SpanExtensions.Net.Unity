@@ -3,7 +3,19 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres not (yet) to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) from v2.0 onwards.
+
+## [2.0.0] - 2025-9-28
+
+### Fixed
+
+- an empty array not being treated as whitespace by range-based Split methods (https://github.com/draconware-dev/SpanExtensions.Net/pull/27)
+- the SearchValues-overload of range-based Split methods.
+
+### Changed
+
+- vectorized `Min()` and `Max()`.
+- transitioned to semantic versioning.
 
 ## [1.5.1] - 2024-12-14
 
@@ -11,7 +23,7 @@ and this project adheres not (yet) to [Semantic Versioning](https://semver.org/s
 
 - incorrect ranges returned by the range-based Split method for versions prior to .Net 9.
 
-### Changed 
+### Changed
 
 - moved MemoryExtensions containing range-based Split method for versions prior to .Net 9 from `System` to `SpanExtensions`.
 - grammatical issues in some documentation comments.
@@ -22,49 +34,49 @@ and this project adheres not (yet) to [Semantic Versioning](https://semver.org/s
 
 - implementations of the newly introduced Span.Split methods from .Net 9 for any version prior to .Net 9 to maintain backwards-compatibility across .Net versions.
 
-### Changed 
+### Changed
 
 - Split extension methods to refer to new split implementations compatible to the ones in .Net 9 and made .Net 9 split methods the default from that version onwards. The original split methods are still accessible as static methods.
 - original Split methods are no longer available without passing span as a parameter.
 
 ## [1.4.2] - 2024-10-29
 
-### Added 
+### Added
 
 - `(Readonly-)Span<T>.Count(...)` overloads to all versions before .Net 8 matching these introduced in .Net 8.
 
-### Changed 
+### Changed
 
-- blocked compilation on .Net 9 due to known incompatibilities, which are to be resolved in version 1.5. 
+- blocked compilation on .Net 9 due to known incompatibilities, which are to be resolved in version 1.5.
 
 ## [1.4.1] - 2024-9-9
 
-### Fixed 
+### Fixed
 
 - a collision between the `Span<T>.Replace` method provided by SpanExtensions and the one newly provided by .Net 8.
 
 ## [1.4] - 2024-9-3
 
-### Added 
+### Added
 
 - `(Readonly-)Span<T>.Count()`
 - `(Readonly-)Span<T>.Count(Predicate<T> predicate)`
 
-### Changed 
+### Changed
 
 - `Split` to throw an `ArgumentException` instead of an `InvalidCountExceedingBehaviourException`
 
-### Removed 
+### Removed
 
 - `InvalidCountExceedingBehaviourException`
 
-### Fixed 
+### Fixed
 
-- various issues with `Split` (https://github.com/draconware-dev/SpanExtensions.Net/pull/11) 
+- various issues with `Split` (https://github.com/draconware-dev/SpanExtensions.Net/pull/11)
 
 ## [1.3] - 2024-3-19
 
-### Added 
+### Added
 
 - Compatibility with **.Net 8**
 - `(Readonly-)Span<T>.First()`
@@ -102,42 +114,42 @@ and this project adheres not (yet) to [Semantic Versioning](https://semver.org/s
 - nuget badge to README (https://github.com/draconware-dev/SpanExtensions.Net/pull/12)
 - `CountExceedingBehaviour`, which is passed to Split, defining how to properly handle its remaining elements.
 
-### Changed 
+### Changed
 
 - documentation comments to better reflect the dotnet style (https://github.com/draconware-dev/SpanExtensions.Net/pull/8)
 - swapped order of `count` and `stringSplitOptions arguments` in `Split` methods.
 - renamed argument `span` in `Split` methods to `source`.
 
-### Fixed 
+### Fixed
 
 - empty spans being ignored if they are the last element to be returned from `Split` and are therefore not returned. (https://github.com/draconware-dev/SpanExtensions.Net/pull/10)
 
 ## [1.2.1] - 2024-1-25
 
-### Fixed 
+### Fixed
 
 - Ambiguous Extension Methods (https://github.com/draconware-dev/SpanExtensions.Net/issues/6)
-- Correctness of some documentation comments     
+- Correctness of some documentation comments
 
 ## [1.2.0] - 2023-12-28
 
-### Added 
+### Added
 
 - Missing documentation comments
 
-### Fixed 
+### Fixed
 
 - Grammatical issues in some documentation comments
 
-### Changed 
+### Changed
 
-- moved custom Enumerators into `SpanExtensions.Enumerators` 
+- moved custom Enumerators into `SpanExtensions.Enumerators`
 - declared every `GetEnumerator` method in a ref struct as `readonly`
-- renamed the source ReadOnlySpan<T> in 10 out of 12 custom Enumerators from *span* to *source* 
+- renamed the source ReadOnlySpan<T> in 10 out of 12 custom Enumerators from _span_ to _source_
 
 ## [1.1.0] - 2023-11-4
 
-### Added 
+### Added
 
 - Compatibility with **.Net 6**
 - Compatibility with **.Net 5**
@@ -149,7 +161,7 @@ and this project adheres not (yet) to [Semantic Versioning](https://semver.org/s
 - Missing documentation comments
 - Changelog
 
-### Fixed 
+### Fixed
 
 - Grammatical issues in some documentation comments
 - Broken link to the repository on nuget ([#3](https://github.com/draconware-dev/SpanExtensions.Net/pull/3))
