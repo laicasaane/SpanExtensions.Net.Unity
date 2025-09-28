@@ -85,7 +85,7 @@ namespace SpanExtensions
                 return result;
             }
 
-            if(Vector128.IsHardwareAccelerated && Vector128<T>.IsSupported && source.Length > Vector128<T>.Count)
+            if(Vector128.IsHardwareAccelerated && Vector128<T>.IsSupported && source.Length > Vector128<T>.Count * 2)
             {
                 ref T current = ref MemoryMarshal.GetReference(source);
                 ref T secondToLast = ref Unsafe.Add(ref current, source.Length - Vector128<T>.Count);
@@ -115,8 +115,8 @@ namespace SpanExtensions
 
                 return result;
             }
-
-            if(Vector64.IsHardwareAccelerated && Vector64<T>.IsSupported && source.Length > Vector64<T>.Count)
+            
+            if(Vector64.IsHardwareAccelerated && Vector64<T>.IsSupported && source.Length > Vector64<T>.Count * 4)
             {
                 ref T current = ref MemoryMarshal.GetReference(source);
                 ref T secondToLast = ref Unsafe.Add(ref current, source.Length - Vector64<T>.Count);
