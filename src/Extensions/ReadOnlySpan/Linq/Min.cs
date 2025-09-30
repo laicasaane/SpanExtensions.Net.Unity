@@ -177,7 +177,7 @@ namespace SpanExtensions
             {
                 T current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -292,7 +292,7 @@ namespace SpanExtensions
             {
                 byte current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -407,7 +407,7 @@ namespace SpanExtensions
             {
                 ushort current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -522,7 +522,7 @@ namespace SpanExtensions
             {
                 uint current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -606,7 +606,7 @@ namespace SpanExtensions
             {
                 ulong current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -721,7 +721,7 @@ namespace SpanExtensions
             {
                 sbyte current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -836,7 +836,7 @@ namespace SpanExtensions
             {
                 short current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -951,7 +951,7 @@ namespace SpanExtensions
             {
                 int current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -1035,7 +1035,7 @@ namespace SpanExtensions
             {
                 long current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -1150,7 +1150,7 @@ namespace SpanExtensions
             {
                 float current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
@@ -1234,7 +1234,7 @@ namespace SpanExtensions
             {
                 double current = source[i];
 
-                if(current.CompareTo(min) > 0)
+                if(current.CompareTo(min) < 0)
                 {
                     min = current;
                 }
