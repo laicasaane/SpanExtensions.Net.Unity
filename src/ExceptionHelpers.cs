@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using SpanExtensions;
@@ -37,6 +36,7 @@ static class ExceptionHelpers
             ThrowGreaterThanOrEqual(value, other, paramName);
         }
     }
+
     internal static void ThrowIfLessThan<T>(T value, T other,
 #if NET8_0_OR_GREATER
         [CallerArgumentExpression(nameof(value))] 
@@ -139,11 +139,24 @@ static class ExceptionHelpers
     }
 #endif
 
+    internal static void ThrowIfNull([NotNull] object? value,
+#if NET8_0_OR_GREATER
+        [CallerArgumentExpression(nameof(value))] 
+#endif
+    string? paramName = null)
+    {
+        if(value is null)
+        {
+            ThrowNull(value, paramName);
+        }
+    }
+
     [DoesNotReturn]
     static void ThrowGreaterThanOrEqual<T>(T value, T other, string? paramName)
     {
         throw new ArgumentOutOfRangeException(paramName, value, $"{paramName} ('{value}') must be less than '{other}'. (Parameter '{paramName}')");
     }
+
     [DoesNotReturn]
     static void ThrowLessThan<T>(T value, T other, string? paramName)
     {
@@ -154,5 +167,11 @@ static class ExceptionHelpers
     static void ThrowNegative<T>(T value, string? paramName)
     {
         throw new ArgumentOutOfRangeException(paramName, value, $"{paramName} ('{value}')  must be a non-negative value. (Parameter '{paramName}')");
+    }
+
+    [DoesNotReturn]
+    static void ThrowNull(object? value, string? paramName)
+    {
+        throw new ArgumentNullException(paramName);
     }
 }

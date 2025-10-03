@@ -211,5 +211,22 @@ namespace SpanExtensions.Tests.UnitTests
 
             return list;
         }
+
+        public static IEnumerable<IEnumerable<T>> ToSystemEnumerable<T>(this MemoryExtensions.SpanSplitEnumerator<T> spanEnumerator, ReadOnlySpan<T> span, int maxCount = 100) where T : IEquatable<T>
+        {
+            List<T[]> list = [];
+
+            foreach(Range range in spanEnumerator)
+            {
+                list.Add(span[range].ToArray());
+
+                if(list.Count >= maxCount)
+                {
+                    throw new IndexOutOfRangeException($"Enumeration exceeded {maxCount}.");
+                }
+            }
+
+            return list;
+        }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Buffers;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 #if !NET9_0_OR_GREATER
 
@@ -62,7 +60,7 @@ namespace SpanExtensions
                 Delimiter = default!;
                 SearchValues = searchValues;
                 DelimiterSpan = default;
-                mode = SpanSplitEnumeratorMode.Delimiter;
+                mode = SpanSplitEnumeratorMode.SearchValues;
                 currentStartIndex = 0;
                 currentEndIndex = 0;
                 nextStartIndex = 0;
@@ -118,19 +116,17 @@ namespace SpanExtensions
                 }
 
                 currentStartIndex = nextStartIndex;
-                
+              
                 if(index < 0)
                 {
                     currentEndIndex = Span.Length;
                     nextStartIndex = Span.Length;
-                    
                     mode = (SpanSplitEnumeratorMode)(-1);
                     return true;
                 }
 
                 currentEndIndex = currentStartIndex + index;
                 nextStartIndex = currentEndIndex + length;
-                
                 return true;
             }
         }
